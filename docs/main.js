@@ -2,8 +2,19 @@
 // ถ้าคุณไม่ได้ติดตั้ง @line/liff ผ่าน npm (และใช้ CDN แทน), คุณไม่จำเป็นต้องมีบรรทัดนี้
 // import liff from '@line/liff'; 
 
-const LIFF_ID = '2007522746-g2a1qOPj'; // <<< ต้องเปลี่ยนเป็น LIFF ID ของคุณที่ได้จาก LINE Developers Console
-const API_BASE_URL = 'http://localhost:3000'; // <<< ต้องเปลี่ยนเป็น URL ของ Backend API ของคุณ
+const LIFF_ID = '2007522746-g2a1qOPj'; // ตรวจสอบว่า LIFF ID นี้ตรงกับที่ได้จาก LINE Developers Console
+const API_BASE_URL = 'https://your-backend-api.com'; // <<< เปลี่ยนเป็น URL ของ Backend API ของคุณ (ต้องเป็น HTTPS)
+
+// รอให้ LIFF SDK โหลดเสร็จก่อน
+document.addEventListener('DOMContentLoaded', function() {
+    // ตรวจสอบว่า LIFF SDK โหลดเสร็จแล้ว
+    if (window.liff) {
+        initializeLiff();
+    } else {
+        // ถ้ายังไม่โหลด ให้รอแล้วลองอีกครั้ง
+        window.addEventListener('liff_init', initializeLiff);
+    }
+});
 
 async function initializeLiff() {
     try {
@@ -227,7 +238,4 @@ async function viewPlayers(ticketId) {
             </p>`;
         playersList.style.display = 'block';
     }
-}
-
-// เริ่มต้นแอพเมื่อโหลดหน้าเว็บเสร็จ
-document.addEventListener('DOMContentLoaded', initializeLiff); 
+} 
