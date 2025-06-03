@@ -142,14 +142,97 @@ function setupForm() {
             const formattedTime = time.split(':').map(num => num.padStart(2, '0')).join(':');
 
             // สร้างข้อความสำหรับ Poll
-            const pollMessage = `🏸 ชวนตีแบด!\n\n📅 ${thaiDate}\n⌚ ${formattedTime} น.\n📍 ${location}\n\n${details ? `📝 ${details}\n\n` : ''}มาตีแบดกัน! กดปุ่ม "👍" เพื่อเข้าร่วม`;
+            const pollTitle = `🏸 ชวนตีแบด!\n\n📅 ${thaiDate}\n⌚ ${formattedTime} น.\n📍 ${location}\n${details ? `\n📝 ${details}` : ''}`;
+
+            // สร้าง Poll ด้วย Flex Message
+            const flexMessage = {
+                type: "flex",
+                altText: "โพลล์ชวนตีแบด",
+                contents: {
+                    type: "bubble",
+                    header: {
+                        type: "box",
+                        layout: "vertical",
+                        contents: [
+                            {
+                                type: "text",
+                                text: "🏸 ชวนตีแบด!",
+                                weight: "bold",
+                                size: "xl",
+                                align: "center"
+                            }
+                        ]
+                    },
+                    body: {
+                        type: "box",
+                        layout: "vertical",
+                        contents: [
+                            {
+                                type: "text",
+                                text: `📅 ${thaiDate}`,
+                                wrap: true
+                            },
+                            {
+                                type: "text",
+                                text: `⌚ ${formattedTime} น.`,
+                                wrap: true
+                            },
+                            {
+                                type: "text",
+                                text: `📍 ${location}`,
+                                wrap: true
+                            },
+                            details ? {
+                                type: "text",
+                                text: `📝 ${details}`,
+                                wrap: true,
+                                margin: "md"
+                            } : null
+                        ].filter(Boolean)
+                    },
+                    footer: {
+                        type: "box",
+                        layout: "vertical",
+                        spacing: "sm",
+                        contents: [
+                            {
+                                type: "button",
+                                style: "primary",
+                                action: {
+                                    type: "postback",
+                                    label: "✅ เข้าร่วม",
+                                    data: `action=join&date=${date}&time=${time}&location=${location}`
+                                }
+                            },
+                            {
+                                type: "button",
+                                style: "secondary",
+                                action: {
+                                    type: "postback",
+                                    label: "❌ ไม่เข้าร่วม",
+                                    data: `action=decline&date=${date}&time=${time}&location=${location}`
+                                }
+                            },
+                            {
+                                type: "button",
+                                action: {
+                                    type: "uri",
+                                    label: "➕ เพิ่มเพื่อน",
+                                    uri: "https://liff.line.me/2007522746-g2a1qOPj/add-friend"
+                                }
+                            }
+                        ]
+                    }
+                }
+            };
 
             // ส่งข้อความไปยังแชท
             await liff.sendMessages([
                 {
-                    type: 'text',
-                    text: pollMessage
-                }
+                    type: "text",
+                    text: pollTitle
+                },
+                flexMessage
             ]);
 
             // ปิดหน้า LIFF

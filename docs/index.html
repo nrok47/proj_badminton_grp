@@ -45,6 +45,17 @@
         <div id="error-message" style="display: none;" class="error-message">
             กรุณาเปิดลิงก์นี้ผ่าน LINE เท่านั้น
         </div>
+
+        <!-- หน้าเพิ่มเพื่อน -->
+        <div id="add-friend-form" style="display: none;">
+            <h2>เพิ่มเพื่อนเข้าร่วม</h2>
+            <form id="friend-form">
+                <label for="friend-name">ชื่อเพื่อน:</label>
+                <input type="text" id="friend-name" required>
+                <button type="submit" class="primary-button">เพิ่มเพื่อน</button>
+            </form>
+            <div id="friends-list"></div>
+        </div>
     </div>
 
     <!-- Load LIFF SDK -->
