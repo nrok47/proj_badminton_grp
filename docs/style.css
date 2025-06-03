@@ -15,9 +15,9 @@ body {
 }
 
 h1 {
-    color: #00B900;
     text-align: center;
-    margin-bottom: 20px;
+    color: #333;
+    margin-bottom: 30px;
 }
 
 h2 {
@@ -31,45 +31,95 @@ h2 {
     gap: 10px;
     margin-bottom: 20px;
     padding: 10px;
-    background: #f8f8f8;
+    background: #f8f9fa;
     border-radius: 8px;
 }
 
-#profile-picture {
+#profile img {
     border-radius: 50%;
 }
 
 form {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 15px;
-    margin-bottom: 30px;
 }
 
 label {
-    font-weight: bold;
-    color: #555;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 5px;
 }
 
-input, textarea {
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="text"],
+textarea {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #00B900;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 5px;
     font-size: 16px;
+    font-family: 'Prompt', sans-serif;
 }
 
-button:hover {
-    background-color: #009900;
+.location-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.radio-option input[type="radio"] {
+    margin: 0;
+}
+
+.radio-option input[type="text"] {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.radio-option label {
+    margin: 0;
+    font-weight: normal;
+}
+
+button.primary-button {
+    background: #00B900;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    font-family: 'Prompt', sans-serif;
+}
+
+button.primary-button:hover {
+    background: #009900;
+}
+
+.error-message {
+    color: #dc3545;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #dc3545;
+    border-radius: 5px;
+    margin-top: 20px;
 }
 
 .ticket-item {
@@ -113,4 +163,19 @@ button:hover {
 
 .view-players-btn:hover {
     background-color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    #liff-app {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
 }

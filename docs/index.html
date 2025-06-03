@@ -4,42 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Badminton Ticket</title>
+    <title>แบดมินตัน Poll</title>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="liff-app">
-        <h1>Badminton Ticket</h1>
+        <h1>สร้าง Poll ตีแบด</h1>
         <div id="profile" style="display: none;">
             <img id="profile-picture" width="50" height="50" alt="Profile Picture">
-            <p>Hello, <span id="user-display-name"></span>!</p>
+            <p>สวัสดี, <span id="user-display-name"></span>!</p>
         </div>
 
-        <h2>Open New Ticket</h2>      
-        <form id="create-ticket-form">
-            <label for="date">Date:</label>
+        <form id="create-poll-form">
+            <label for="date">วันที่:</label>
             <input type="date" id="date" required><br>
-            <label for="time">Time:</label>
-            <input type="time" id="time" required><br>
-            <label for="location">Location:</label>
-            <input type="text" id="location" placeholder="e.g., สนามกีฬาแห่งชาติ" required><br>
-            <label for="max-players">Max Players:</label>
-            <input type="number" id="max-players" min="2" value="4" required><br>
-            <label for="details">Details:</label>
-            <textarea id="details" placeholder="e.g., ค่าคอร์ทคนละ 100 บาท"></textarea><br>
-            <button type="submit">Create Ticket</button>
+
+            <label for="time">เวลา: (24H)</label>
+            <input type="time" id="time" required step="900"><br>
+
+            <label>สถานที่:</label>
+            <div class="location-options">
+                <div class="radio-option">
+                    <input type="radio" id="location1" name="location" value="Fitness The River" required>
+                    <label for="location1">1. Fitness The River</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="location2" name="location" value="other">
+                    <label for="location2">2. อื่นๆ</label>
+                    <input type="text" id="location-other" placeholder="ระบุสถานที่" disabled>
+                </div>
+            </div>
+
+            <label for="details">รายละเอียดเพิ่มเติม:</label>
+            <textarea id="details" placeholder="เช่น ค่าคอร์ทคนละ 100 บาท"></textarea><br>
+
+            <button type="submit" class="primary-button">สร้าง Poll ในกลุ่ม</button>
         </form>
 
-        <h2>Available Tickets</h2>
-        <div id="ticket-list">
-            <p>Loading tickets...</p>
+        <div id="error-message" style="display: none;" class="error-message">
+            กรุณาเปิดลิงก์นี้ผ่าน LINE เท่านั้น
         </div>
     </div>
 
     <!-- Load LIFF SDK -->
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-    <!-- Load our app after LIFF SDK -->
+    <!-- Load our app -->
     <script src="main.js"></script>
 </body>
 </html>
