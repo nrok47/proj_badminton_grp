@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+#liff-app {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #00b900; /* LINE Green */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #e6ffe6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#profile img {
+    border-radius: 50%;
+    border: 1px solid #00b900;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+form input, form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: calc(100% - 22px); /* Account for padding and border */
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+form button {
+    background-color: #00b900;
+    color: white;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-color: #009900;
+}
+
+.ticket-item {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.ticket-item h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.ticket-item p {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+.ticket-item button {
+    background-color: #007bff; /* Blue for action buttons */
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+.ticket-item button:hover {
+    background-color: #0056b3;
+}
+
+.ticket-item .view-players-btn {
+    background-color: #6c757d; /* Grey for view button */
+}
+
+.ticket-item .view-players-btn:hover {
+    background-color: #5a6268;
+}
+
+.players-list {
+    margin-top: 10px;
+    padding-left: 15px;
+    border-left: 3px solid #00b900;
+}
+
+.players-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.players-list li {
+    background-color: #e0ffe0;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+    border: 1px solid #c8ecc8;
+}
