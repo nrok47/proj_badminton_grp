@@ -144,96 +144,34 @@ function setupForm() {
             // สร้างข้อความสำหรับ Poll
             const pollTitle = `🏸 ชวนตีแบด!\n\n📅 ${thaiDate}\n⌚ ${formattedTime} น.\n📍 ${location}\n${details ? `\n📝 ${details}` : ''}`;
 
-            // สร้าง Poll ด้วย Flex Message
-            const flexMessage = {
-                type: "flex",
-                altText: "โพลล์ชวนตีแบด",
-                contents: {
-                    type: "bubble",
-                    header: {
-                        type: "box",
-                        layout: "vertical",
-                        contents: [
-                            {
-                                type: "text",
-                                text: "🏸 ชวนตีแบด!",
-                                weight: "bold",
-                                size: "xl",
-                                align: "center"
+            // สร้าง Quick Reply แทน Flex Message
+            const message = {
+                type: "text",
+                text: pollTitle,
+                quickReply: {
+                    items: [
+                        {
+                            type: "action",
+                            action: {
+                                type: "message",
+                                label: "✅ เข้าร่วม",
+                                text: "เข้าร่วม"
                             }
-                        ]
-                    },
-                    body: {
-                        type: "box",
-                        layout: "vertical",
-                        contents: [
-                            {
-                                type: "text",
-                                text: `📅 ${thaiDate}`,
-                                wrap: true
-                            },
-                            {
-                                type: "text",
-                                text: `⌚ ${formattedTime} น.`,
-                                wrap: true
-                            },
-                            {
-                                type: "text",
-                                text: `📍 ${location}`,
-                                wrap: true
-                            },
-                            details ? {
-                                type: "text",
-                                text: `📝 ${details}`,
-                                wrap: true,
-                                margin: "md"
-                            } : null
-                        ].filter(Boolean)
-                    },
-                    footer: {
-                        type: "box",
-                        layout: "vertical",
-                        spacing: "sm",
-                        contents: [
-                            {
-                                type: "button",
-                                style: "primary",
-                                action: {
-                                    type: "postback",
-                                    label: "✅ เข้าร่วม",
-                                    data: `action=join&date=${date}&time=${time}&location=${location}`
-                                }
-                            },
-                            {
-                                type: "button",
-                                style: "secondary",
-                                action: {
-                                    type: "postback",
-                                    label: "❌ ไม่เข้าร่วม",
-                                    data: `action=decline&date=${date}&time=${time}&location=${location}`
-                                }
-                            },
-                            {
-                                type: "button",
-                                action: {
-                                    type: "uri",
-                                    label: "➕ เพิ่มเพื่อน",
-                                    uri: "https://liff.line.me/2007522746-g2a1qOPj/add-friend"
-                                }
+                        },
+                        {
+                            type: "action",
+                            action: {
+                                type: "message",
+                                label: "❌ ไม่เข้าร่วม",
+                                text: "ไม่เข้าร่วม"
                             }
-                        ]
-                    }
+                        }
+                    ]
                 }
             };
 
             // ส่งข้อความไปยังแชท
-            await liff.sendMessages([
-                {
-                    type: "text",
-                    text: pollTitle
-                },
-                flexMessage
-            ]);
+            await liff.sendMessages([message]);
 
             // ปิดหน้า LIFF
             liff.closeWindow();
